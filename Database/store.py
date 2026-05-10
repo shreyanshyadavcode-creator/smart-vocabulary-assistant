@@ -12,54 +12,49 @@ import sqlite3
 
 def data_add(data):
     
-    def connection_established(data):
-        connection = sqlite3.connect(DB_PATH)
-        cursor = connection.cursor()
-        cursor.execute("""
 
-        CREATE TABLE IF NOT EXISTS vocabulary (
+    connection = sqlite3.connect(DB_PATH)
+    cursor = connection.cursor()
+    cursor.execute("""
 
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+    CREATE TABLE IF NOT EXISTS vocabulary (
 
-            word TEXT,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-            meaning TEXT,
+        word TEXT,
 
-            example TEXT,
+        meaning TEXT,
 
-            synonym TEXT
-        )
+        example TEXT,
 
-        """)
+        synonym TEXT
+    )
+
+    """)
 
 
-        cursor.execute("""
-                    INSERT INTO vocabulary(
-                        word,
-                        meaning,
-                        example,
-                        synonym
-                    )
-                    VALUES(?,?,?,?)
-                    
-                    """,
-                    (
-                        data["word"],
-                        data["meaning"],
-                        data["example"],
-                        data["synonym"]
-        )
-        )
-        
-        connection.commit()
-
-        connection.close()
-        return True
+    cursor.execute("""
+                INSERT INTO vocabulary(
+                    word,
+                    meaning,
+                    example,
+                    synonym
+                )
+                VALUES(?,?,?,?)
+                
+                """,
+                (
+                    data["word"],
+                    data["meaning"],
+                    data["example"],
+                    data["synonym"]
+    )
+    )
     
-    if connection_established() == True:
-        return True
-    else:
-        return False
+    connection.commit()
+
+    connection.close()
+    return True
     
    
 
