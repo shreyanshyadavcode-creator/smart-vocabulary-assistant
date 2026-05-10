@@ -13,9 +13,13 @@ from Database.word_exists import word_exists
 
 def send_mail():
     smart_word = return_word()
-    
-    value = data_add(data= smart_word)
-    if word_exists() == 0:
+    word = smart_word['word']
+            
+    while(word_exists(word) != 0 ):
+        data = return_word()
+        word = data['word']
+    else : 
+        value = data_add(data= smart_word)
         sender = os.getenv("sender")
         reciever = os.getenv("reciever")
         password = os.getenv("password")
@@ -49,7 +53,9 @@ def send_mail():
             
         print("sent")
         return True
-    else :
-        data = return_word()
+        
+        
+    
+
 
 send_mail()
