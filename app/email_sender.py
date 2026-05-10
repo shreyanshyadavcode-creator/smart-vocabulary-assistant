@@ -9,44 +9,47 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 load_dotenv()
 from app.word_generator import return_word
 from Database.store import data_add
+from Database.word_exists import word_exists
 
 def send_mail():
     smart_word = return_word()
     
     value = data_add(data= smart_word)
+    if word_exists() == 0:
+        sender = os.getenv("sender")
+        reciever = os.getenv("reciever")
+        password = os.getenv("password")
 
-    sender = os.getenv("sender")
-    reciever = os.getenv("reciever")
-    password = os.getenv("password")
-
-    html = f"""
-    <html>
-        <body>
-            <h2>Today's Word</h2>
+        html = f"""
+        <html>
+            <body>
+                <h2>Today's Word</h2>
+                
+                <p><b>Word : </b>{smart_word['word']}</p>
+                
+                <p><b>Meaning : </b>{smart_word['meaning']}</p>
+                
+                <p><b>Example : </b>{smart_word['example']}</p>
             
-            <p><b>Word : </b>{smart_word['word']}</p>
-            
-            <p><b>Meaning : </b>{smart_word['meaning']}</p>
-            
-            <p><b>Example : </b>{smart_word['example']}</p>
-        
-            <p><b>Synonym : </b>{smart_word['synonym']}</p>
-        </body>
-    </html>
-    """
+                <p><b>Synonym : </b>{smart_word['synonym']}</p>
+            </body>
+        </html>
+        """
 
-    message = MIMEText(html, "html")
-    message["subject"] = "word of the day"
-    message["from"] = sender
-    message["to"] = reciever
+        message = MIMEText(html, "html")
+        message["subject"] = "word of the day"
+        message["from"] = sender
+        message["to"] = reciever
 
-    with smtplib.SMTP("smtp.gmail.com",587) as server:
-        server.starttls()
-        server.login(sender,password)
-        server.send_message(message)
-        server.quit()
-        
-    print("sent")
-    return True
+        with smtplib.SMTP("smtp.gmail.com",587) as server:
+            server.starttls()
+            server.login(sender,password)
+            server.send_message(message)
+            server.quit()
+            
+        print("sent")
+        return True
+    else :
+        data = return_word()
 
 send_mail()
