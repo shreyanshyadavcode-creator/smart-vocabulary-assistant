@@ -11,28 +11,8 @@ DB_PATH = BASE_DIR / "word.db"
 import sqlite3
 
 def data_add(data):
-    
-
     connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
-    cursor.execute("""
-
-    CREATE TABLE IF NOT EXISTS vocabulary (
-
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-        word TEXT,
-
-        meaning TEXT,
-
-        example TEXT,
-
-        synonym TEXT
-    )
-
-    """)
-
-
     cursor.execute("""
                 INSERT INTO vocabulary(
                     word,
@@ -50,15 +30,6 @@ def data_add(data):
                     data["synonym"]
     )
     )
-    
     connection.commit()
-
     connection.close()
-    return True
-    
-   
-
-
-
-
-            
+    return True            

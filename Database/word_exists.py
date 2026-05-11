@@ -17,12 +17,9 @@ def word_exists(word):
         connection = sqlite3.connect(DB_PATH)
         cursor = connection.cursor()
         cursor.execute(
-            "SELECT 1 FROM vocabulary WHERE word = ?" ,
+            "SELECT * FROM vocabulary WHERE word = ?" ,
             (word,)
         )
         result = cursor.fetchone()
         connection.close()
         return result
-    
-print(word_exists(data['word']))
-    
