@@ -48,7 +48,7 @@ def send_mail():
     message["from"] = sender
     message["to"] = reciever
 
-    with smtplib.SMTP("smtp.gmail.com",587) as server:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.starttls()
         server.login(sender,password)
         server.send_message(message)
@@ -56,4 +56,3 @@ def send_mail():
        
     print("sent")
 
-send_mail()
