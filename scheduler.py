@@ -26,7 +26,7 @@ scheduler.add_job(
     safe_send,
 
     trigger="interval",
-    seconds = 30
+    seconds = 120
 
     # hour=9,
 
