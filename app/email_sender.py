@@ -49,7 +49,7 @@ def send_mail():
     message["to"] = reciever
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.starttls()
+        
         server.login(sender,password)
         server.send_message(message)
         server.quit()
