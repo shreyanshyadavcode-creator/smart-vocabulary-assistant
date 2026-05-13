@@ -19,7 +19,7 @@ scheduler = BlockingScheduler(
 scheduler.add_job(
     safe_send,
     trigger="interval",
-    seconds = 75
+    seconds = 300
 
     # hour=9,
 
