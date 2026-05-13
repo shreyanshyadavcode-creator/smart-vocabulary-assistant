@@ -25,9 +25,9 @@ scheduler.add_job(
     safe_send,
     trigger="interval",
     
-    hour=9,
+    hours=9,
 
-    minute=0
+    minutes=0
 )
 
 print("Scheduler started...")
