@@ -1,1 +1,1 @@
-worker: python test_network.py
+worker: python app/test_network.py
