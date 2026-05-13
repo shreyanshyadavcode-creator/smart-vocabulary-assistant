@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from app.email_send import send_mail
+from app.gmail_sender_module import send_mail
 from zoneinfo import ZoneInfo
 
 def safe_send():
