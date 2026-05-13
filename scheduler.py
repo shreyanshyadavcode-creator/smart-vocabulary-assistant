@@ -24,11 +24,10 @@ scheduler = BlockingScheduler(
 scheduler.add_job(
     safe_send,
     trigger="interval",
-    seconds = 300
+    
+    hour=9,
 
-    # hour=9,
-
-    # minute=0
+    minute=0
 )
 
 print("Scheduler started...")
