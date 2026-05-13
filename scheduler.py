@@ -1,4 +1,9 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
+import os
+
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.gmail_sender_module import send_mail
 from zoneinfo import ZoneInfo
 

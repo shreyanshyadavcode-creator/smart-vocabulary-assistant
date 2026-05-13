@@ -18,7 +18,7 @@ def vocabulary_table():
 
         id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        word TEXT,
+        word TEXT UNIQUE,
 
         meaning TEXT,
 
