@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 load_dotenv()
+
 from app.word_generator import return_word
 from Database.store import data_add
 from Database.word_exists import word_exists

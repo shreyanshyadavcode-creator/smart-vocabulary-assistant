@@ -15,7 +15,7 @@ def return_word():
             {
                 "role": "system",
                 "content": (
-                    "You are an English vocabulary teacher. "
+                    "You are an English vocabulary assistant. "
                     "Generate exactly in JSON format with these content:\n\n"
                     "word: <word>\n"
                     "meaning : <Hindi meaning>\n"
@@ -27,7 +27,7 @@ def return_word():
                 "role": "user",
                 "content": (
                     "Give me one advanced English word that is useful "
-                    "in day-to-day life and leaves an impact on people."
+                    "in day-to-day life,that will be used in office(mnc companies) for communication in meetings,presentation that help me to achieve big and leaves an impact on people."
                 )
             }
         ]
