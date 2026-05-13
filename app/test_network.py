@@ -1,10 +1,26 @@
-import requests
+import os
+from dotenv import load_dotenv
+import resend
+
+load_dotenv()
+
+resend.api_key = os.getenv("RESEND_API_KEY")
 
 try:
 
-    response = requests.get("https://google.com")
+    response = resend.Emails.send({
 
-    print(response.status_code)
+        "from": "onboarding@resend.dev",
+
+        "to": ["shreyanshyadav.code@gmail.com"],
+
+        "subject": "Railway Resend Test",
+
+        "html": "<h1>Hello from Railway</h1>"
+
+    })
+
+    print(response)
 
 except Exception as e:
 
